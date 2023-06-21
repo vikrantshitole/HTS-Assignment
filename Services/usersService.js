@@ -25,9 +25,8 @@ const signInUser = (reqData) =>{
             if (!user) {
                 return reject({message: 'User does not exist with email ' + reqData.email})
             }
-            reqData.password = bcrypt.hashSync(reqData.password,8)
             const passwordIsValid = bcrypt.compareSync(
-                req.body.password,
+                reqData.password,
                 user.password
               );
               if (!passwordIsValid) {
